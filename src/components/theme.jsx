@@ -15,12 +15,13 @@ let theme = createTheme({
 	typography: {
 		fontFamily: "sans-serif",
 		h1: {
-			fontSize: 35,
-			marginTop: 10,
+			fontSize: 24,
+			marginTop: 20,
 			marginLeft: 20,
 			marginRight: 20,
 			marginBottom: 10,
 			fontWeight: "bold",
+			textAlign: "center",
 		},
 		h2: {
 			fontSize: 30,
@@ -31,11 +32,12 @@ let theme = createTheme({
 			fontWeight: "bold",
 		},
 		h3: {
-			fontSize: 25,
+			fontSize: 22,
 			marginTop: 10,
 			marginLeft: 25,
 			marginRight: 20,
 			marginBottom: 10,
+			textAlign: "center",
 		},
 		h4: {
 			fontSize: 20,
