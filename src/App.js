@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+// Style
 import './App.css';
 
+import React,{useState, useEffect} from 'react'
+
+// Axios for integrating Rails api with React client
+import axios from 'axios';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+    // Event data value and set method. 
+    const [data, setData] = useState({ hits: [] });
+
+    // On application start, send get request to Welcome_api to retrieve all events
+    useEffect(() => {
+        // Asynchronously retrieve events using Axios
+        const fetchData = async () => {
+            // Get request will set result when returned
+          const result = await axios(
+            'http://localhost:3000/events',
+          );
+            
+          // Once result is received, use set method to store events
+          setData(result.data);
+        };
+    
+        fetchData();
+      }, []);
+   
+
+    return (
+    <div>
+        
+        <h1>Hello world!</h1>
+
+        {/* If events exist, display them. If not, display no events message */}
+        <ul>
+            {data.length ? data.map(item => (
+                <li key={item.id}>{item.name}</li>
+            )) : <li>Nothing to show</li>}
+        </ul>
+        
+        
     </div>
   );
 }
