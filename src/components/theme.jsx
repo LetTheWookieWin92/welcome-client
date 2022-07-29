@@ -24,7 +24,7 @@ let theme = createTheme({
 			textAlign: "center",
 		},
 		h2: {
-			fontSize: 30,
+			fontSize: 22,
 			marginTop: 10,
 			marginLeft: 25,
 			marginRight: 20,
@@ -32,12 +32,13 @@ let theme = createTheme({
 			fontWeight: "bold",
 		},
 		h3: {
-			fontSize: 22,
+			fontSize: 19,
 			marginTop: 10,
 			marginLeft: 25,
 			marginRight: 20,
 			marginBottom: 10,
 			textAlign: "center",
+			color: "#36454F",
 		},
 		h4: {
 			fontSize: 20,
@@ -46,12 +47,14 @@ let theme = createTheme({
 			marginRight: 20,
 			marginBottom: 10,
 		},
+		// Card titles
 		h5: {
-			fontSize: 18,
+			fontSize: 15,
 			marginTop: 10,
-			marginLeft: 25,
-			marginRight: 20,
+			marginLeft: 5,
+			marginRight: 5,
 			marginBottom: 10,
+			fontWeight: "bold",
 		},
 		// Nav bar titles only
 		h6: {
@@ -59,19 +62,20 @@ let theme = createTheme({
 		},
 		// Normal paragraph text
 		body1: {
-			fontSize: 14,
+			fontSize: 13,
 			marginTop: 15,
 			marginLeft: 30,
 			marginRight: 30,
 			marginBottom: 15,
-			textAlign: "left",
+			textAlign: "center",
+			color: "grey",
 		},
 		// Labels with no padding and lighter shade
 		body2: {
-			fontSize: 14,
+			fontSize: 13,
 			marginTop: 0,
-			marginLeft: 30,
-			marginRight: 30,
+			marginLeft: 5,
+			marginRight: 5,
 			marginBottom: 0,
 			textAlign: "left",
 			color: "#9c9c9c",

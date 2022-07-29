@@ -10,6 +10,7 @@ import theme from "./components/theme";
 // MaterialUI components
 import NavigationBar from "./components/navigationBar";
 import { Typography } from "@mui/material/";
+import OrientationCard from "./components/orientationCard";
 
 // Images
 import banner from "./images/Banner.png";
@@ -43,10 +44,24 @@ function App() {
         <ThemeProvider theme={theme}>
             <NavigationBar textLabel="University of Sydney" showBack="No" />
             <div>
-            <img class="cover-image" src={banner} alt="Banner" />
+                <img class="cover-image" src={banner} alt="Banner" />
 
                 <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>Welcome to Sydney Law School</Typography>
                 <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Acknowledgement of Country</Typography>
+
+                <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>In Australia, the Acknowledgement of Country is a show of respect for Traditional Owners and the continuing connection of Aboriginal and Torres Strait Islander peoples to Country. Delivered by the Dean in our new indigenous garden.</Typography>
+
+                <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Orientation Materials</Typography>
+                <div class="card-collection">
+                    <OrientationCard />
+                    <OrientationCard />
+                    <OrientationCard />
+                    <OrientationCard />
+                    <OrientationCard />
+
+                </div>
+                
+                <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Create your Schedule</Typography>
 
                 {/* If events exist, display them. If not, display no events message */}
                 <ul>
@@ -62,15 +77,3 @@ function App() {
 }
 
 export default App;
-
-/*
-
-<p style="text-align: center; width: 100%; margin-top: 30px; margin-bottom: 10px; font-size: 18pt; color: black;">Acknowledgement of country</p>
-<div style="width: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center;">
-    <p style="text-align: center; color: grey; margin-top: 10px; margin-bottom: 10px; max-width: 1000px; font-size: 12pt;"><i>In Australia, the Acknowledgement of Country is a show of respect for Traditional Owners and the continuing connection of Aboriginal and Torres Strait Islander peoples to Country. Delivered by the Dean in our new indigenous garden.</i></p>
-</div>
-
-
-
-
-*/
