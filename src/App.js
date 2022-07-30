@@ -11,6 +11,7 @@ import theme from "./components/theme";
 import NavigationBar from "./components/navigationBar";
 import { Typography } from "@mui/material/";
 import OrientationCard from "./components/orientationCard";
+import StatusForm from "./components/statusForm"
 
 // Images
 import banner from "./images/Banner.png";
@@ -63,6 +64,7 @@ function App() {
                 
                 <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Create your Schedule</Typography>
 
+                <StatusForm />
                 {/* If events exist, display them. If not, display no events message */}
                 <ul>
                     {data.length ? data.map(item => (
