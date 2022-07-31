@@ -21,6 +21,43 @@ import axios from 'axios';
 
 function App() {
 
+    // Status form selections
+    const [degree, setDegree] = useState("Bachelor of Laws (from Bachelor of Commerce)");
+    const [studentStatus, setStudentStatus] = useState("Domestic");
+    const [englishStatus, setEnglishStatus] = useState("Yes");
+    const [commonStatus, setCommonStatus] = useState("Yes");
+
+    // Handler for when user makes a change to any of the form fields
+    function handleFormChange(change) {
+        
+        switch (change[0]) {
+            case 'Degree':
+                setDegree(change[1]);
+                break;
+            case 'Status':
+                setStudentStatus(change[1]);
+                break;
+            case 'English':
+                setEnglishStatus(change[1]);
+                break;
+            case 'Common':
+                setCommonStatus(change[1]);
+                break;
+            default:
+
+            }
+    }
+
+    function submitForm() {
+        console.log("Degree: " + degree + "\nStatus: " + studentStatus + "\nEnglish: " + englishStatus + "\nCommon: " + commonStatus);
+    }
+
+    // After async save
+    /*useEffect(() => {
+        console.log("Degree: " + degree + "\nStatus: " + studentStatus + "\nEnglish: " + englishStatus + "\nCommon: " + commonStatus);
+    },[degree, studentStatus, englishStatus, commonStatus]);*/
+    
+
     // Event data value and set method. 
     const [data, setData] = useState({ hits: [] });
 
@@ -45,7 +82,7 @@ function App() {
         <ThemeProvider theme={theme}>
             <NavigationBar textLabel="University of Sydney" showBack="No" />
             <div>
-                <img class="cover-image" src={banner} alt="Banner" />
+                <img className="cover-image" src={banner} alt="Banner" />
 
                 <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>Welcome to Sydney Law School</Typography>
                 <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Acknowledgement of Country</Typography>
@@ -64,7 +101,10 @@ function App() {
                 
                 <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Create your Schedule</Typography>
 
-                <StatusForm />
+                <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />
+
+
+
                 {/* If events exist, display them. If not, display no events message */}
                 <ul>
                     {data.length ? data.map(item => (

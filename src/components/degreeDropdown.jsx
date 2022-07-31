@@ -5,11 +5,9 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function BasicSelect() {
-	const [degree, setDegree] = React.useState("");
-
+export default function BasicSelect(props) {
 	const handleChange = (event) => {
-		setDegree(event.target.value);
+		props.changeMade(["Degree", event.target.value]);
 	};
 
 	return (
@@ -22,7 +20,7 @@ export default function BasicSelect() {
 					labelId="demo-simple-select-label"
 					sx={{ backgroundColor: "white" }}
 					id="demo-simple-select"
-					value={degree}
+					value={props.degreeSelected}
 					label="Degree"
 					onChange={handleChange}>
 					<MenuItem value={"Bachelor of Laws (from Bachelor of Arts)"}>

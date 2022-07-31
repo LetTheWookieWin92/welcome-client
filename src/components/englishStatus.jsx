@@ -1,58 +1,37 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import FormLabel from "@mui/material/FormLabel";
-import FormControl from "@mui/material/FormControl";
-import FormGroup from "@mui/material/FormGroup";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
-export default function CheckboxesGroup() {
-	const [state, setState] = React.useState({
-		yes: false,
-		no: false,
-	});
-
+export default function RowRadioButtonsGroup(props) {
 	const handleChange = (event) => {
-		setState({
-			...state,
-			[event.target.name]: event.target.checked,
-		});
+		props.changeMade(["English", event.target.value]);
 	};
 
-	const { yes, no } = state;
-	const error = [yes, no].filter((v) => v).length !== 2;
-
 	return (
-		<Box sx={{ display: "flex" }}>
-			<FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
-				<FormLabel component="legend">
-					Is English your first language?
-				</FormLabel>
-				<FormGroup>
-					<FormControlLabel
-						control={
-							<Checkbox
-								checked={yes}
-								color="secondary"
-								onChange={handleChange}
-								name="yes"
-							/>
-						}
-						label="Yes"
-					/>
-					<FormControlLabel
-						control={
-							<Checkbox
-								checked={no}
-								color="secondary"
-								onChange={handleChange}
-								name="no"
-							/>
-						}
-						label="No"
-					/>
-				</FormGroup>
-			</FormControl>
-		</Box>
+		<FormControl>
+			<FormLabel id="demo-row-radio-buttons-group-label">
+				Is English your first language?
+			</FormLabel>
+			<RadioGroup
+				row
+				aria-labelledby="demo-row-radio-buttons-group-label"
+				name="row-radio-buttons-group"
+				onChange={handleChange}
+				value={props.englishSelected}>
+				<FormControlLabel
+					value="Yes"
+					control={<Radio color="secondary" />}
+					label="Yes"
+				/>
+				<FormControlLabel
+					value="No"
+					control={<Radio color="secondary" />}
+					label="No"
+				/>
+			</RadioGroup>
+		</FormControl>
 	);
 }

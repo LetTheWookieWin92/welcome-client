@@ -8,7 +8,7 @@ import EnglishStatus from "./englishStatus";
 import CommonLawStatus from "./commonLawStatus";
 import Button from "@mui/material/Button";
 
-export default function SimplePaper() {
+export default function SimplePaper(props) {
 	return (
 		<Box
 			sx={{
@@ -23,11 +23,23 @@ export default function SimplePaper() {
 				},
 			}}>
 			<Paper elevation={1} sx={{ backgroundColor: "#f5f5f5", padding: "15px" }}>
-				<DegreeDropdown />
-				<StudentStatus />
-				<EnglishStatus />
-				<CommonLawStatus />
-				<Button variant="contained" color="secondary">
+				<DegreeDropdown
+					degreeSelected={props.degree}
+					changeMade={props.onChange}
+				/>
+				<StudentStatus
+					statusSelected={props.studentStatus}
+					changeMade={props.onChange}
+				/>
+				<EnglishStatus
+					englishSelected={props.englishStatus}
+					changeMade={props.onChange}
+				/>
+				<CommonLawStatus
+					commonSelected={props.commonStatus}
+					changeMade={props.onChange}
+				/>
+				<Button variant="contained" color="secondary" onClick={props.onSubmit}>
 					Create schedule
 				</Button>
 			</Paper>

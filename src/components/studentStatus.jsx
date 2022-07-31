@@ -1,56 +1,37 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import FormLabel from "@mui/material/FormLabel";
-import FormControl from "@mui/material/FormControl";
-import FormGroup from "@mui/material/FormGroup";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
-export default function CheckboxesGroup() {
-	const [state, setState] = React.useState({
-		domestic: false,
-		international: false,
-	});
-
+export default function RowRadioButtonsGroup(props) {
 	const handleChange = (event) => {
-		setState({
-			...state,
-			[event.target.name]: event.target.checked,
-		});
+		props.changeMade(["Status", event.target.value]);
 	};
 
-	const { domestic, international } = state;
-	const error = [domestic, international].filter((v) => v).length !== 2;
-
 	return (
-		<Box sx={{ display: "flex" }}>
-			<FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
-				<FormLabel component="legend">Student status</FormLabel>
-				<FormGroup>
-					<FormControlLabel
-						control={
-							<Checkbox
-								checked={domestic}
-								color="secondary"
-								onChange={handleChange}
-								name="domestic"
-							/>
-						}
-						label="Domestic"
-					/>
-					<FormControlLabel
-						control={
-							<Checkbox
-								checked={international}
-								color="secondary"
-								onChange={handleChange}
-								name="international"
-							/>
-						}
-						label="International"
-					/>
-				</FormGroup>
-			</FormControl>
-		</Box>
+		<FormControl>
+			<FormLabel id="demo-row-radio-buttons-group-label">
+				Student status
+			</FormLabel>
+			<RadioGroup
+				row
+				aria-labelledby="demo-row-radio-buttons-group-label"
+				name="row-radio-buttons-group"
+				onChange={handleChange}
+				value={props.statusSelected}>
+				<FormControlLabel
+					value="Domestic"
+					control={<Radio color="secondary" />}
+					label="Domestic"
+				/>
+				<FormControlLabel
+					value="International"
+					control={<Radio color="secondary" />}
+					label="International"
+				/>
+			</RadioGroup>
+		</FormControl>
 	);
 }
