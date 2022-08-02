@@ -8,7 +8,7 @@ import { Typography } from "@mui/material/";
 
 import Moment from "moment";
 
-export default function SimplePaper({ scheduleEvents }) {
+export default function SimplePaper({ optionalEvents }) {
 	// Change date to readable format
 	function formatDate(date) {
 		return Moment(date).format("dddd D MMMM, h:mm a");
@@ -29,13 +29,13 @@ export default function SimplePaper({ scheduleEvents }) {
 			}}>
 			<Paper elevation={1} sx={{ backgroundColor: "#f5f5f5", padding: "15px" }}>
 				<Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>
-					Your Schedule
+					Add events
 				</Typography>
 
 				{/* If events exist, display them. If not, display no events message */}
 				<ul>
-					{scheduleEvents.length ? (
-						scheduleEvents.map((item) => (
+					{optionalEvents.length ? (
+						optionalEvents.map((item) => (
 							<li key={item.id}>
 								<b>{formatDate(item.date)}</b>: {item.name}
 							</li>

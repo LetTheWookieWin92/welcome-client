@@ -1,4 +1,5 @@
 import YourSchedule from "./yourSchedule";
+import OptionalEvents from "./optionalEvents";
 
 import React from "react";
 
@@ -58,6 +59,11 @@ const Schedule = ({
 	console.log(scheduleEvents);
     */
 
+	// Reusable function to sort events chronilogically
+	function sortEvents(events) {
+		return events.slice().sort((a, b) => b.date - a.date);
+	}
+
 	return (
 		<React.Fragment>
 			<Button
@@ -73,12 +79,19 @@ const Schedule = ({
 					display: "flex",
 					flexWrap: "wrap",
 					justifyContent: "center",
-					alignItems: "center",
+					alignItems: "flex-start",
 					"& > :not(style)": {
 						m: 1,
 					},
 				}}>
-				<YourSchedule scheduleEvents={scheduleEvents} />
+				<YourSchedule scheduleEvents={sortEvents(scheduleEvents)} />
+				<OptionalEvents
+					optionalEvents={sortEvents(
+						allEvents.filter(function (event) {
+							return event.compulsory === false;
+						})
+					)}
+				/>
 			</Box>
 		</React.Fragment>
 	);
