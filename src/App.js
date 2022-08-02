@@ -10,8 +10,11 @@ import theme from "./components/theme";
 // MaterialUI components
 import NavigationBar from "./components/navigationBar";
 import { Typography } from "@mui/material/";
+
+// Components
 import OrientationCard from "./components/orientationCard";
 import StatusForm from "./components/statusForm"
+import Schedule from "./components/schedule";
 
 // Images
 import banner from "./images/Banner.png";
@@ -34,7 +37,7 @@ function App() {
                 return <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />;
                 
             case "Schedule":
-                return <h1>Schedule</h1>;
+                return <Schedule events={data} degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus}  />;
 
             default:
                 return <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />;
@@ -70,7 +73,8 @@ function App() {
 
     // When form is submitted, change display mode to schedule
     function submitForm() {
-        console.log("Degree: " + degree + "\nStatus: " + studentStatus + "\nEnglish: " + englishStatus + "\nCommon: " + commonStatus);
+        
+        /*console.log("Degree: " + degree + "\nStatus: " + studentStatus + "\nEnglish: " + englishStatus + "\nCommon: " + commonStatus);*/
 
         changeDisplayMode("Schedule");
     }
@@ -127,18 +131,6 @@ function App() {
                 {/* Render depending on display mode */}
                 {renderDisplayMode(displayMode)}
 
-                
-
-
-
-                {/* If events exist, display them. If not, display no events message */}
-                <ul>
-                    {data.length ? data.map(item => (
-                        <li key={item.id}>{item.name}</li>
-                    )) : <li>Nothing to show</li>}
-                </ul>
-                
-                
             </div>
         </ThemeProvider>
   );
