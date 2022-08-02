@@ -21,6 +21,26 @@ import axios from 'axios';
 
 function App() {
 
+    // Display mode switches depending on whether user is filling out the form or viewing schedule
+    const [displayMode, setDisplayMode] = useState("Form");
+
+    function changeDisplayMode(mode) {
+        setDisplayMode(mode);
+    }
+
+    function renderDisplayMode (mode) {
+        switch (displayMode) {
+            case "Form":
+                return <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />;
+                
+            case "Schedule":
+                return <h1>Schedule</h1>;
+
+            default:
+                return <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />;
+        }
+    }
+
     // Status form selections
     const [degree, setDegree] = useState("Bachelor of Laws (from Bachelor of Commerce)");
     const [studentStatus, setStudentStatus] = useState("Domestic");
@@ -48,8 +68,11 @@ function App() {
             }
     }
 
+    // When form is submitted, change display mode to schedule
     function submitForm() {
         console.log("Degree: " + degree + "\nStatus: " + studentStatus + "\nEnglish: " + englishStatus + "\nCommon: " + commonStatus);
+
+        changeDisplayMode("Schedule");
     }
 
     // After async save
@@ -101,7 +124,10 @@ function App() {
                 
                 <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Create your Schedule</Typography>
 
-                <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />
+                {/* Render depending on display mode */}
+                {renderDisplayMode(displayMode)}
+
+                
 
 
 
