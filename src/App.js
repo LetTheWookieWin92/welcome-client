@@ -37,7 +37,7 @@ function App() {
                 return <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />;
                 
             case "Schedule":
-                return <Schedule events={data} degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus}  />;
+                return <Schedule events={data} degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onBackPress={changeDisplayMode} />;
 
             default:
                 return <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />;

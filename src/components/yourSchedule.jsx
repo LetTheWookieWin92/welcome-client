@@ -3,7 +3,7 @@ import * as React from "react";
 // MaterialUI components
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
+//import Button from "@mui/material/Button";
 import { Typography } from "@mui/material/";
 
 export default function SimplePaper({ scheduleEvents }) {

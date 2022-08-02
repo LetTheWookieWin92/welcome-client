@@ -1,6 +1,9 @@
 import YourSchedule from "./yourSchedule";
 
+import React from "react";
+
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 const Schedule = ({
 	events,
@@ -8,6 +11,7 @@ const Schedule = ({
 	studentStatus,
 	englishStatus,
 	commonStatus,
+	onBackPress,
 }) => {
 	// All events returned from API
 	let allEvents = [];
@@ -55,18 +59,28 @@ const Schedule = ({
     */
 
 	return (
-		<Box
-			sx={{
-				display: "flex",
-				flexWrap: "wrap",
-				justifyContent: "center",
-				alignItems: "center",
-				"& > :not(style)": {
-					m: 1,
-				},
-			}}>
-			<YourSchedule scheduleEvents={scheduleEvents} />
-		</Box>
+		<React.Fragment>
+			<Button
+				variant="contained"
+				color="secondary"
+				onClick={() => {
+					onBackPress("Form");
+				}}>
+				Start again
+			</Button>
+			<Box
+				sx={{
+					display: "flex",
+					flexWrap: "wrap",
+					justifyContent: "center",
+					alignItems: "center",
+					"& > :not(style)": {
+						m: 1,
+					},
+				}}>
+				<YourSchedule scheduleEvents={scheduleEvents} />
+			</Box>
+		</React.Fragment>
 	);
 };
 
