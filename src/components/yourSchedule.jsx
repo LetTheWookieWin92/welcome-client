@@ -3,12 +3,12 @@ import * as React from "react";
 // MaterialUI components
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-//import Button from "@mui/material/Button";
-import { Typography } from "@mui/material/";
+
+import { Button, Typography } from "@mui/material/";
 
 import Moment from "moment";
 
-export default function SimplePaper({ scheduleEvents }) {
+export default function SimplePaper({ scheduleEvents, removeFromSchedule }) {
 	// Change date to readable format
 	function formatDate(date) {
 		return Moment(date).format("dddd D MMMM, h:mm a");
@@ -37,7 +37,18 @@ export default function SimplePaper({ scheduleEvents }) {
 					{scheduleEvents.length ? (
 						scheduleEvents.map((item) => (
 							<li key={item.id}>
-								<b>{formatDate(item.date)}</b>: {item.name}
+								<b>{formatDate(item.date)}</b>: {item.name}{" "}
+								{item.compulsory !== true ? (
+									<Button
+										color="secondary"
+										onClick={() => {
+											removeFromSchedule(item);
+										}}>
+										Remove
+									</Button>
+								) : (
+									console.log(".")
+								)}
 							</li>
 						))
 					) : (
