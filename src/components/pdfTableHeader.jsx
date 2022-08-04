@@ -13,13 +13,13 @@ const styles = StyleSheet.create({
 	},
 	dateHeader: {
 		fontSize: 9,
-		width: "20%",
+		width: "30%",
 		padding: 5,
 		fontStyle: "bold",
 	},
 	nameHeader: {
 		fontSize: 9,
-		width: "60%",
+		width: "50%",
 		padding: 5,
 	},
 	presenterHeader: {

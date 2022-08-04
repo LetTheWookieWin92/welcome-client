@@ -12,7 +12,7 @@ export default function RowRadioButtonsGroup(props) {
 
 	return (
 		<FormControl>
-			<FormLabel id="demo-row-radio-buttons-group-label">
+			<FormLabel color="secondary" id="demo-row-radio-buttons-group-label">
 				Student status
 			</FormLabel>
 			<RadioGroup

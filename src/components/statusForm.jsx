@@ -16,6 +16,7 @@ export default function SimplePaper(props) {
 				flexWrap: "wrap",
 				justifyContent: "center",
 				alignItems: "center",
+				marginBottom: 10,
 				"& > :not(style)": {
 					m: 1,
 					maxWidth: 600,
@@ -27,21 +28,46 @@ export default function SimplePaper(props) {
 					degreeSelected={props.degree}
 					changeMade={props.onChange}
 				/>
-				<StudentStatus
-					statusSelected={props.studentStatus}
-					changeMade={props.onChange}
-				/>
-				<EnglishStatus
-					englishSelected={props.englishStatus}
-					changeMade={props.onChange}
-				/>
-				<CommonLawStatus
-					commonSelected={props.commonStatus}
-					changeMade={props.onChange}
-				/>
-				<Button variant="contained" color="secondary" onClick={props.onSubmit}>
-					Create schedule
-				</Button>
+
+				<Box
+					sx={{
+						display: "flex",
+						flexWrap: "wrap",
+						justifyContent: "center",
+						alignItems: "center",
+						marginBottom: "10px",
+						"& > :not(style)": {
+							m: 1,
+						},
+					}}>
+					<StudentStatus
+						statusSelected={props.studentStatus}
+						changeMade={props.onChange}
+					/>
+					<EnglishStatus
+						englishSelected={props.englishStatus}
+						changeMade={props.onChange}
+					/>
+					<CommonLawStatus
+						commonSelected={props.commonStatus}
+						changeMade={props.onChange}
+					/>
+				</Box>
+
+				<Box
+					sx={{
+						display: "flex",
+						flexWrap: "wrap",
+						justifyContent: "center",
+						alignItems: "center",
+					}}>
+					<Button
+						variant="contained"
+						color="secondary"
+						onClick={props.onSubmit}>
+						Create schedule
+					</Button>
+				</Box>
 			</Paper>
 		</Box>
 	);

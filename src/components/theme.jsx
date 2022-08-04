@@ -77,6 +77,26 @@ let theme = createTheme({
 			textAlign: "left",
 			color: "#9c9c9c",
 		},
+
+		eventCardDate: {
+			fontSize: 13,
+			margin: 5,
+			textAlign: "left",
+			color: "#9c9c9c",
+		},
+
+		eventCardDateWarning: {
+			fontSize: 13,
+			margin: 5,
+			textAlign: "left",
+			color: "#e34331",
+		},
+
+		eventCardTitle: {
+			fontSize: 15,
+			margin: 5,
+			fontWeight: "bold",
+		},
 	},
 });
 

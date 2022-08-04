@@ -3,17 +3,13 @@ import * as React from "react";
 // MaterialUI components
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import EventCard from "./optionalEventCard";
 
-import { Button, Typography } from "@mui/material/";
+import { Typography } from "@mui/material/";
 
-import Moment from "moment";
+import "./style.css";
 
 export default function SimplePaper({ optionalEvents, addToSchedule }) {
-	// Change date to readable format
-	function formatDate(date) {
-		return Moment(date).format("dddd D MMMM, h:mm a");
-	}
-
 	return (
 		<Box
 			sx={{
@@ -21,40 +17,30 @@ export default function SimplePaper({ optionalEvents, addToSchedule }) {
 				flexWrap: "wrap",
 				justifyContent: "center",
 				alignItems: "center",
+				flexBasis: "600px",
+				flexGrow: 0,
 				"& > :not(style)": {
 					m: 1,
-					maxWidth: 600,
-					minWidth: 300,
 				},
 			}}>
-			<Paper elevation={1} sx={{ backgroundColor: "#f5f5f5", padding: "15px" }}>
+			<Paper
+				elevation={1}
+				sx={{ backgroundColor: "#f5f5f5", padding: "15px", width: "100%" }}>
 				<Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>
 					Add events
 				</Typography>
 
 				{/* If events exist, display them. If not, display no events message */}
-				<ul>
-					{optionalEvents.length ? (
-						optionalEvents.map((item) => (
-							<li key={item.id}>
-								<b>{formatDate(item.date)}</b>: {item.name}{" "}
-								<Button
-									color="secondary"
-									onClick={() => {
-										addToSchedule(item);
-									}}>
-									Add
-								</Button>
-							</li>
-						))
-					) : (
-						<li>Nothing to show</li>
-					)}
-				</ul>
 
-				{/*<Button variant="contained" color="secondary">
-					Download PDF
-                    </Button>*/}
+				{optionalEvents.length ? (
+					optionalEvents.map((item) => (
+						<EventCard item={item} addToSchedule={addToSchedule} />
+					))
+				) : (
+					<Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+						No events have been added, please check back later
+					</Typography>
+				)}
 			</Paper>
 		</Box>
 	);

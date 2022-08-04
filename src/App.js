@@ -73,18 +73,10 @@ function App() {
 
     // When form is submitted, change display mode to schedule
     function submitForm() {
-        
-        /*console.log("Degree: " + degree + "\nStatus: " + studentStatus + "\nEnglish: " + englishStatus + "\nCommon: " + commonStatus);*/
 
         changeDisplayMode("Schedule");
     }
-
-    // After async save
-    /*useEffect(() => {
-        console.log("Degree: " + degree + "\nStatus: " + studentStatus + "\nEnglish: " + englishStatus + "\nCommon: " + commonStatus);
-    },[degree, studentStatus, englishStatus, commonStatus]);*/
-    
-
+   
     // Event data value and set method. 
     const [data, setData] = useState({ hits: [] });
 
@@ -112,9 +104,14 @@ function App() {
                 <img className="cover-image" src={banner} alt="Banner" />
 
                 <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>Welcome to Sydney Law School</Typography>
-                <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Acknowledgement of Country</Typography>
+           
 
-                <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>In Australia, the Acknowledgement of Country is a show of respect for Traditional Owners and the continuing connection of Aboriginal and Torres Strait Islander peoples to Country. Delivered by the Dean in our new indigenous garden.</Typography>
+                <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>To all of our students - new and returning, on campus and overseas -
+				welcome to Sydney Law School. Our campuses sit on the ancestral lands of
+				Australia's First Peoples, where they have taught and learned for tens
+				of thousands of years. As a community, we come together as one Sydney,
+				but many peoples and continue the exchange of knowledge upon these lands
+				proudly.</Typography>
 
                 <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Orientation Materials</Typography>
                 <div class="card-collection">
