@@ -106,6 +106,7 @@ const Schedule = ({
 			</Button>
 			<Box
 				sx={{
+					marginBottom: "100px",
 					display: "flex",
 					flexWrap: "wrap",
 					justifyContent: "center",

@@ -8,6 +8,9 @@ import { Button, Typography } from "@mui/material/";
 
 import Moment from "moment";
 
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PdfDocument from "./pdfDocument";
+
 export default function SimplePaper({ scheduleEvents, removeFromSchedule }) {
 	// Change date to readable format
 	function formatDate(date) {
@@ -38,7 +41,7 @@ export default function SimplePaper({ scheduleEvents, removeFromSchedule }) {
 						scheduleEvents.map((item) => (
 							<li key={item.id}>
 								<b>{formatDate(item.date)}</b>: {item.name}{" "}
-								{item.compulsory !== true ? (
+								{item.compulsory !== true && (
 									<Button
 										color="secondary"
 										onClick={() => {
@@ -46,19 +49,30 @@ export default function SimplePaper({ scheduleEvents, removeFromSchedule }) {
 										}}>
 										Remove
 									</Button>
-								) : (
-									console.log(".")
 								)}
 							</li>
 						))
 					) : (
-						<li>Nothing to show</li>
+						<li>Add events to get started!</li>
 					)}
 				</ul>
 
-				{/*<Button variant="contained" color="secondary">
-					Download PDF
-                    </Button>*/}
+				{/* If there are events in schedule, display option to download as PDF */}
+				{scheduleEvents.length > 0 && (
+					<PDFDownloadLink
+						document={<PdfDocument data={scheduleEvents} />}
+						fileName="Sydney Law School - Welcome Schedule.pdf">
+						{({ blob, url, loading, error }) =>
+							loading ? (
+								"Preparing PDF"
+							) : (
+								<Button variant="contained" color="secondary">
+									Download PDF
+								</Button>
+							)
+						}
+					</PDFDownloadLink>
+				)}
 			</Paper>
 		</Box>
 	);
