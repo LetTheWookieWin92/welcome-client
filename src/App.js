@@ -119,7 +119,7 @@ function App() {
         const fetchData = async () => {
             // Get request will set result when returned
           const result = await axios(
-            'http://localhost:3000/events',
+            'https://sls-welcome-api.herokuapp.com/events',
           );
             
           // Once result is received, use set method to store events

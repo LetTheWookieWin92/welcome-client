@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const eventAPI = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://sls-welcome-api.herokuapp.com/'
 })
 
 export default eventAPI;

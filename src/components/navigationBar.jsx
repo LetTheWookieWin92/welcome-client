@@ -19,21 +19,9 @@ const useStyles = makeStyles({
 	title: {
 		textAlign: "center",
 	},
-
-	item1: {
-		//backgroundColor: "#ffffdb",
-	},
-
-	item2: {
-		//backgroundColor: "#f5f5f5",
-	},
-
-	item3: {
-		//backgroundColor: "#ffffdb",
-	},
 });
 
-const NavigationBar = ({ backLabel, backPressed, showBack }) => {
+const NavigationBar = () => {
 	const classes = useStyles();
 
 	return (
