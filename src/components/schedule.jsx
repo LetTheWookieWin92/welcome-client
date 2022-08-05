@@ -30,6 +30,7 @@ const Schedule = ({
 			let event = {
 				id: temp.id,
 				name: temp.name,
+				location: temp.location,
 				description: temp.description,
 				duration: temp.duration,
 				date: temp.date,

@@ -19,6 +19,8 @@ export default function BasicCard({ item, addToSchedule }) {
 				<div>
 					<Typography variant="eventCardDate" component="div">
 						{formatDate(item.date)} - {Moment(item.endTime).format("h:mm a")}
+						{" in "}
+						{item.location}
 					</Typography>
 					<Typography variant="eventCardTitle" component="div">
 						{item.name}

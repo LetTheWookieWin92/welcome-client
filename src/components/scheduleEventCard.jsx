@@ -24,12 +24,15 @@ export default function BasicCard({ item, removeFromSchedule }) {
 				<div>
 					{item.clashing ? (
 						<Typography variant="eventCardDateWarning" component="div">
-							{formatDate(item.date)} - {Moment(item.endTime).format("h:mm a")}{" "}
-							(Event clashes)
+							{formatDate(item.date)} - {Moment(item.endTime).format("h:mm a")}
+							{" in "}
+							{item.location} (Event clashes)
 						</Typography>
 					) : (
 						<Typography variant="eventCardDate" component="div">
 							{formatDate(item.date)} - {Moment(item.endTime).format("h:mm a")}
+							{" in "}
+							{item.location}
 						</Typography>
 					)}
 
@@ -37,7 +40,7 @@ export default function BasicCard({ item, removeFromSchedule }) {
 						{item.name}
 					</Typography>
 				</div>
-				{item.compulsory !== true && (
+				{item.compulsory !== true ? (
 					<IconButton
 						edge="start"
 						color="secondary"
@@ -47,6 +50,10 @@ export default function BasicCard({ item, removeFromSchedule }) {
 						}}>
 						<RemoveIcon />
 					</IconButton>
+				) : (
+					<Typography variant="eventCardDate" component="div">
+						Compulsory
+					</Typography>
 				)}
 			</div>
 		</Card>

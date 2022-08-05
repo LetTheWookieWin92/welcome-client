@@ -24,6 +24,40 @@ import axios from 'axios';
 
 function App() {
 
+    // Orientation materiall links are taken directly from active university site
+    let acknowledgement = {
+        title: "Acknowledgement of country ",
+        url: "Acknowledgement of country ",
+        imageURL: "https://canvas.sydney.edu.au/courses/4533/files/11750246/preview",
+    }
+
+    let aTeam = {
+        title: "Meet the Associate Deans",
+        url: "https://www.youtube.com/watch?v=MaI9gtI0Pio",
+        imageURL: "https://canvas.sydney.edu.au/courses/4533/files/15251380/preview",
+    }
+
+    let transition = {
+        title: "Transition to Studying Law",
+        url: "https://echo360.org.au/media/ceffaff7-171f-404d-b85b-9508acf9533f/public",
+        imageURL: "https://canvas.sydney.edu.au/courses/4533/files/12062104/preview",
+    }
+
+    let integrity = {
+        title: "Academic Integrity",
+        url: "https://www.sydney.edu.au/students/academic-integrity.html",
+        imageURL: "https://canvas.sydney.edu.au/courses/4533/files/14080915/preview",
+    }
+
+
+    let common = {
+        title: "Law Bites",
+        url: "https://canvas.sydney.edu.au/courses/4533/pages/law-bites",
+        imageURL: "https://canvas.sydney.edu.au/courses/4533/files/722112/preview",
+    }
+
+    let orientationMaterials = [acknowledgement, aTeam, transition, integrity, common]
+
     // Display mode switches depending on whether user is filling out the form or viewing schedule
     const [displayMode, setDisplayMode] = useState("Form");
 
@@ -73,7 +107,6 @@ function App() {
 
     // When form is submitted, change display mode to schedule
     function submitForm() {
-
         changeDisplayMode("Schedule");
     }
    
@@ -105,7 +138,6 @@ function App() {
 
                 <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>Welcome to Sydney Law School</Typography>
            
-
                 <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>To all of our students - new and returning, on campus and overseas -
 				welcome to Sydney Law School. Our campuses sit on the ancestral lands of
 				Australia's First Peoples, where they have taught and learned for tens
@@ -113,15 +145,20 @@ function App() {
 				but many peoples and continue the exchange of knowledge upon these lands
 				proudly.</Typography>
 
-                <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Orientation Materials</Typography>
-                <div class="card-collection">
-                    <OrientationCard />
-                    <OrientationCard />
-                    <OrientationCard />
-                    <OrientationCard />
-                    <OrientationCard />
+                {orientationMaterials.length > 0 && (
+                    <div>
+                        <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Orientation Materials</Typography>
+                        <div class="card-collection">
+                            {orientationMaterials.map((item) => (
+                                <OrientationCard item={item} />
+					        ))}
 
-                </div>
+                        </div>
+                    </div>
+                )}
+
+
+                
                 
                 <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Create your Schedule</Typography>
 

@@ -1,21 +1,17 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-export default function ActionAreaCard() {
+export default function ActionAreaCard({ item }) {
 	return (
 		<Card sx={{ width: 250, margin: 1, backgroundColor: "#f5f5f5" }}>
-			<CardActionArea>
-				<CardMedia component="img" height="50" image="" alt="Material" />
+			<CardActionArea href={item.url} target="_blank">
 				<CardContent>
+					<img src={item.imageURL} width="60" height="60" alt="Icon" />
 					<Typography gutterBottom variant="h5" component="div">
-						Title
-					</Typography>
-					<Typography variant="body2" color="text.secondary">
-						Description
+						{item.title}
 					</Typography>
 				</CardContent>
 			</CardActionArea>
