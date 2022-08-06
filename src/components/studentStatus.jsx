@@ -1,4 +1,6 @@
 import * as React from "react";
+
+//MUI components
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -7,6 +9,7 @@ import FormLabel from "@mui/material/FormLabel";
 
 export default function RowRadioButtonsGroup(props) {
 	const handleChange = (event) => {
+		// Update form status
 		props.changeMade(["Status", event.target.value]);
 	};
 

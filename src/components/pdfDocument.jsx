@@ -1,6 +1,7 @@
 import React from "react";
-import { Document, Page, Text, StyleSheet, Image } from "@react-pdf/renderer";
 
+// React-pdf components
+import { Document, Page, Text, StyleSheet, Image } from "@react-pdf/renderer";
 import PDFItemsTable from "./pdfItemsTable";
 
 //Images
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
 	},
 });
 
-// Create Document Component
+// Create document component containing all necessary information for PDF schedule
 const PdfDocument = (
 	{ data } //
 ) => (
@@ -73,6 +74,7 @@ const PdfDocument = (
 			</Text>
 			<Text style={styles.subtitle}>Welcome Schedule</Text>
 
+			{/* Pass events in schedule to display in table */}
 			<PDFItemsTable data={data} />
 		</Page>
 	</Document>

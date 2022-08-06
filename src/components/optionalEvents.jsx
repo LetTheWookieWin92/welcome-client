@@ -4,9 +4,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import EventCard from "./optionalEventCard";
-
 import { Typography } from "@mui/material/";
 
+// Additional style sheet
 import "./style.css";
 
 export default function SimplePaper({ optionalEvents, addToSchedule }) {
@@ -30,11 +30,15 @@ export default function SimplePaper({ optionalEvents, addToSchedule }) {
 					Add events
 				</Typography>
 
-				{/* If events exist, display them. If not, display no events message */}
+				{/* If events exist, display them (pass down event and addToSchedule through props). If not, display no events message */}
 
 				{optionalEvents.length ? (
 					optionalEvents.map((item) => (
-						<EventCard item={item} addToSchedule={addToSchedule} />
+						<EventCard
+							key={item.id}
+							item={item}
+							addToSchedule={addToSchedule}
+						/>
 					))
 				) : (
 					<Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>

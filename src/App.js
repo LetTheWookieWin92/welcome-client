@@ -24,7 +24,7 @@ import axios from 'axios';
 
 function App() {
 
-    // Orientation materiall links are taken directly from active university site
+    // Orientation material links are taken directly from active university site
     let acknowledgement = {
         title: "Acknowledgement of country ",
         url: "Acknowledgement of country ",
@@ -61,11 +61,13 @@ function App() {
     // Display mode switches depending on whether user is filling out the form or viewing schedule
     const [displayMode, setDisplayMode] = useState("Form");
 
+    // Called every time the interface needs to change
     function changeDisplayMode(mode) {
         setDisplayMode(mode);
     }
 
-    function renderDisplayMode (mode) {
+    // Pass component with props, depending on the current display mode
+    function renderDisplayMode() {
         switch (displayMode) {
             case "Form":
                 return <StatusForm degree={degree} studentStatus={studentStatus} englishStatus={englishStatus} commonStatus={commonStatus} onChange={handleFormChange} onSubmit={submitForm} />;
@@ -78,7 +80,7 @@ function App() {
         }
     }
 
-    // Status form selections
+    // Status form initial selections
     const [degree, setDegree] = useState("Bachelor of Laws (from Bachelor of Commerce)");
     const [studentStatus, setStudentStatus] = useState("Domestic");
     const [englishStatus, setEnglishStatus] = useState("Yes");
@@ -86,7 +88,7 @@ function App() {
 
     // Handler for when user makes a change to any of the form fields
     function handleFormChange(change) {
-        
+        // change is an array with 2 elements; the first being the parameter that's changed, the second being the option that was selected
         switch (change[0]) {
             case 'Degree':
                 setDegree(change[1]);
@@ -132,7 +134,7 @@ function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <NavigationBar textLabel="University of Sydney" showBack="No" />
+            <NavigationBar textLabel="University of Sydney" />
             <div>
                 <img className="cover-image" src={banner} alt="Banner" />
 
@@ -148,22 +150,20 @@ function App() {
                 {orientationMaterials.length > 0 && (
                     <div>
                         <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Orientation Materials</Typography>
-                        <div class="card-collection">
+                        <div className="card-collection">
+                            { /* Render all orientation materials components */ }
                             {orientationMaterials.map((item) => (
-                                <OrientationCard item={item} />
+                                <OrientationCard key={item.title} item={item} />
 					        ))}
 
                         </div>
                     </div>
                 )}
 
-
-                
-                
                 <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>Create your Schedule</Typography>
 
                 {/* Render depending on display mode */}
-                {renderDisplayMode(displayMode)}
+                {renderDisplayMode()}
 
             </div>
         </ThemeProvider>

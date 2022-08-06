@@ -1,6 +1,9 @@
 import React from "react";
+
+// React-pdf components
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
 
+// Brand styles for table header
 const styles = StyleSheet.create({
 	row: {
 		flexDirection: "row",

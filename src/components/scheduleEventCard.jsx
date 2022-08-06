@@ -1,12 +1,17 @@
 import * as React from "react";
+
+//MUI components
 import Card from "@mui/material/Card";
 import { IconButton, Typography } from "@mui/material/";
 import RemoveIcon from "@mui/icons-material/Remove";
 
+// Additional style sheet
 import "./style.css";
 
+// For clean and readable date formatting
 import Moment from "moment";
 
+// removeFromSchedule function and event is passed down through props
 export default function BasicCard({ item, removeFromSchedule }) {
 	// Change date to readable format
 	function formatDate(date) {
@@ -22,6 +27,7 @@ export default function BasicCard({ item, removeFromSchedule }) {
 			}}>
 			<div className="eventCardContainer">
 				<div>
+					{/* Conditional rendering depending on whether event is clashing */}
 					{item.clashing ? (
 						<Typography variant="eventCardDateWarning" component="div">
 							{formatDate(item.date)} - {Moment(item.endTime).format("h:mm a")}

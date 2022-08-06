@@ -1,5 +1,6 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
+// Brand palette used as theme, which is passed down through component tree
 let theme = createTheme({
 	palette: {
 		primary: {

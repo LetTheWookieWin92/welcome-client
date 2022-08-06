@@ -1,12 +1,17 @@
 import * as React from "react";
+
+//MUI components
 import Card from "@mui/material/Card";
 import { IconButton, Typography } from "@mui/material/";
 import AddIcon from "@mui/icons-material/Add";
 
+// Additional stylesheet
 import "./style.css";
 
+// For clean date formatting
 import Moment from "moment";
 
+// addToSchedule function and event is passed down through props
 export default function BasicCard({ item, addToSchedule }) {
 	// Change date to readable format
 	function formatDate(date) {

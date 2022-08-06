@@ -1,14 +1,22 @@
-import YourSchedule from "./yourSchedule";
-import OptionalEvents from "./optionalEvents";
-
 import React, { useState } from "react";
 
+// Component for displaying user's schedule
+import YourSchedule from "./yourSchedule";
+
+// Compoenent for displaying all optional events
+import OptionalEvents from "./optionalEvents";
+
+//MUI components
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
+// Additional style sheet
 import "./style.css";
 
+// For clean and readable date formatting
 import Moment from "moment";
+
+// Extends Moment library to allow you to add durations to events, to return the end date/time
 import { extendMoment } from "moment-range";
 const moment = extendMoment(Moment);
 
@@ -81,23 +89,28 @@ const Schedule = ({
 		});
 	}
 
-	// Check for clash
+	// Mark events as clashing if any happen at the same time
 	function clashCheck(events) {
 		let index = 0;
 		// For each event in events, check for clash
 		for (let firstEvent of events) {
+			// Range between dates
 			let firstEventRange = moment.range([firstEvent.date, firstEvent.endTime]);
 
 			let clashCount = 0;
+
 			// Compare with each other event, add clash attribute as necessary
 			for (let secondEvent of events) {
+				// Don't compare event with itself
 				if (firstEvent.id === secondEvent.id) {
 				} else {
+					// Range of event it is comparing with
 					let secondEventRange = moment.range([
 						secondEvent.date,
 						secondEvent.endTime,
 					]);
 
+					// Use Moment-extender function to check if events overlap
 					if (firstEventRange.overlaps(secondEventRange)) {
 						clashCount++;
 					}
@@ -115,7 +128,7 @@ const Schedule = ({
 		return events;
 	}
 
-	// Adds event to schedule and removes from optional events
+	// Adds event to schedule and removes from optional events, checking for clashes and sorting schedule
 	function addToSchedule(event) {
 		// Add to schedule events and sort by date
 		let tempSchedule = [...scheduleEvents];
@@ -130,7 +143,7 @@ const Schedule = ({
 		setOptionalEvents([...tempOptional]);
 	}
 
-	// Removes event from schedule and adds to optional events
+	// Removes event from schedule and adds to optional events, checking for clashes and sorting schedule
 	function removeFromSchedule(event) {
 		// Add to optional events and sort by date
 		let tempOptional = [...optionalEvents];
@@ -148,6 +161,7 @@ const Schedule = ({
 	return (
 		<React.Fragment>
 			<div className="container">
+				{/* Back button to return display to form */}
 				<Button
 					variant="contained"
 					color="secondary"
@@ -170,6 +184,7 @@ const Schedule = ({
 						m: 1,
 					},
 				}}>
+				{/* Pass down events and add /remove functions as appropriate to components */}
 				<YourSchedule
 					scheduleEvents={scheduleEvents}
 					removeFromSchedule={removeFromSchedule}

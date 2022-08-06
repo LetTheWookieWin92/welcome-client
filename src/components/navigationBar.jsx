@@ -1,14 +1,17 @@
 import React from "react";
+
+//MUI components
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-
-import { makeStyles } from "@mui/styles";
-
-//Images
-import logo from "../images/Logo.jpeg";
-
 import { Typography } from "@mui/material/";
 
+// MUI tool for creating custom styles
+import { makeStyles } from "@mui/styles";
+
+//Brand logo
+import logo from "../images/Logo.jpeg";
+
+// Create custom style
 const useStyles = makeStyles({
 	root: {
 		flexGrow: 1,

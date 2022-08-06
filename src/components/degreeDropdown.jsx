@@ -1,4 +1,6 @@
 import * as React from "react";
+
+//MUI components
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,6 +9,7 @@ import Select from "@mui/material/Select";
 
 export default function BasicSelect(props) {
 	const handleChange = (event) => {
+		// Update form status
 		props.changeMade(["Degree", event.target.value]);
 	};
 

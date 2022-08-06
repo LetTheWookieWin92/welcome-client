@@ -1,8 +1,11 @@
 import React from "react";
+
+// React-pdf components
 import { View, StyleSheet } from "@react-pdf/renderer";
 import PDFTableRow from "./pdfTableRow";
 import PDFTableHeader from "./pdfTableHeader";
 
+// Brand styling for table
 const styles = StyleSheet.create({
 	tableContainer: {
 		marginLeft: "50px",
@@ -15,6 +18,7 @@ const styles = StyleSheet.create({
 	},
 });
 
+// Creates table with header row and event rows
 const PDFItemsTable = ({ data }) => (
 	<View style={styles.tableContainer}>
 		<PDFTableHeader />
